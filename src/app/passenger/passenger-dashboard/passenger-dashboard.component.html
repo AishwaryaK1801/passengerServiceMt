@@ -1,0 +1,25 @@
+<ng-container *ngIf="passArr; else noPassData">
+  <app-passenger-count
+    class="mb-4"
+    [getTotalCount]="totalCount"
+    [getcheckInCount]="checkInCount"
+  ></app-passenger-count>
+
+  <ul class="list-group mb-4">
+    <li class="list-group-item" *ngFor="let pass of passArr">
+     {{pass.fullname}}
+    </li>
+  </ul>
+
+  <app-passenger-cards
+  (emitRemoveMsg)="getCount()"
+   [getPass]="pass"
+  *ngFor="let pass of passArr"
+  >
+
+  </app-passenger-cards>
+</ng-container>
+
+<ng-template #noPassData>
+  <p class="alert alert-warning">Passenger data is not available !!!</p>
+</ng-template>

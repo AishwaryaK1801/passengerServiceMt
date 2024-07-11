@@ -1,0 +1,13 @@
+.form-control:disabled{
+    background-color:transparent;
+    opacity: 1;
+    border: 0px;
+}
+
+.shape{
+    width: 10px;
+     height: 10px;
+     border-radius: 50%;
+     display: inline-block;
+     align-self: center;
+}

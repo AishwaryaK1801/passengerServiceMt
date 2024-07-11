@@ -1,0 +1,28 @@
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="form-group d-flex mb-0">
+            <label for="pname" class="sr-only">Passenger Name</label>
+            <span class="shape"
+            [ngClass]="{
+                'bg-danger':!getPass.checkedIn,
+                'bg-success': getPass.checkInDate
+            }"
+            > </span>
+            <input #fullname [disabled]="!isInEditMode" type="text" name="pname" [value]="getPass.fullname" class="form-control">
+        </div>
+
+            <p class="m-0">
+                check in date : {{getPass.checkInDate? (getPass.checkInDate|date): 'Not Checked in yet'}}
+            </p>
+            <p class="m-0">
+                children : {{(getPass.children?.length)||0}}
+            </p>
+        
+        <div class="card-footer">
+            <button class="btn btn-success" (click)="isInEditMode=true" *ngIf="!isInEditMode">Edit</button>
+            <button class="btn btn-warning" (click)="onUpdate(fullname);isInEditMode=false" *ngIf="isInEditMode">Done</button>
+            <button class="btn btn-danger ml-4" (click)="onPassRemove()">Remove</button>
+
+        </div>
+    </div>
+</div>
